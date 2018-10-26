@@ -4,24 +4,70 @@
 	<title>formvalidation</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
 </head>
 <body>
+      <script type="text/javascript">
+        function myFunction(){
+
+  if (document.myForm.firstname.value =="")
+  {
+    alert("Please Provide your First Name");
+    document.myForm.firstname.focus();
+    return false;
+  }
+  
+  if(document.myForm.middlename.value =="")
+  {
+    alert("Please Provide your Middle Name");
+    document.myForm.middlename.focus();
+    return false;
+  }
+  if(document.myForm.lastname.value =="")
+  {
+    alert("please Provide your Last Name");
+    document.myForm.lastname.focus();
+    return false;
+  }
+  var emailID = document.myForm.email.value;
+         atpos = emailID.indexOf("@");
+         dotpos = emailID.lastIndexOf(".");
+         
+         if (atpos < 1 || ( dotpos - atpos < 2 )) 
+         {
+            alert("Please enter correct email ID")
+            document.myForm.email.focus() ;
+            return false;
+         }
+      if(document.myForm.selectedIndex==0) 
+      {
+        alert("Please Provide your Education");
+        document.myForm.education.focus();
+        return false;
+      }
+
+      if(document.myForm.message.value =="")
+      {
+        alert("please Provide your Bio");
+        document.myForm.message.focus();
+        return false;
+      }
+    return (true);
+}
+      </script>
+
    <div class="fluid-container">	
-       <form class="zero">
+       <form class="zero" name="myForm" action="/action_page.php" onsubmit="return(myFunction());">
        	   <div class="design"> 
        	   	   <div class="normal">
-     	        <h6> First Name:-</h6> <input type="text" name="firstname"><br><br>
-     	       <h6> Middle Name:-</h6> <input type="text" name="middlename"><br><br>
-     	       <h6> Last Name:-  </h6> <input type="text" name="lastname"><br><br>
-     	       <h6> Email:-      </h6> <input type="text" name="email"><br><hr><br>
+     	        <h6> First Name:-</h6> <input id="inp1" type="text" name="firstname" required><br><br>
+     	       <h6> Middle Name:-</h6> <input id="inp2" type="text" name="middlename" required><br><br>
+     	       <h6> Last Name:-  </h6> <input id="inp3" type="text" name="lastname" required><br><br>
+     	       <h6> Email:-      </h6> <input id="inp4" type="Email" name="email" required><br><hr><br>
                </div>
             
                 <h6>Education:-</h6>
-     	        <select>
+     	        <select name="education">
      		      <option value="BA">BA</option>
      		      <option value="MA">MA</option>
      		      <option value="BCS">BCS</option>
@@ -32,9 +78,9 @@
      	         <input type="radio" name="gender" value="male"><br>
      	         <label for="female">Female</label>
      	         <input type="radio" name="gender" value="female"><br><hr>
-     	      
+     	     
      	     <textarea name="message" style="width: 300px;height: 200px;">About Yourself...</textarea><br>
-     	       <button type="button" onclick="alert('Profile has been Submitted!!')">Submit</button>    
+     	       <button type="submit" value="Submit">Submit</button>    
            </div>
        </form>
    </div>
